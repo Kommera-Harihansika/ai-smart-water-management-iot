@@ -139,7 +139,6 @@ def submit_question(question: str) -> None:
 
 
 def main() -> None:
-    st.set_page_config(page_title="Water Supply Explainer Bot", page_icon="💧", layout="centered")
     st.markdown(
         """
         <style>
@@ -192,5 +191,13 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    st.set_page_config(page_title="Water Supply Explainer Bot", page_icon="💧", layout="centered")
+    current_page = st.navigation(
+        [
+            st.Page(main, title="Explainer Bot", icon="💧", default=True),
+            st.Page("pages/2_Existing Dashboard.py", title="Existing Dashboard", icon="📊"),
+        ],
+        position="sidebar",
+    )
+    current_page.run()
 
