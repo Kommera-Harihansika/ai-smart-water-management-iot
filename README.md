@@ -11,7 +11,7 @@ A Streamlit chatbot that explains drinking-water treatment, distribution, common
 - Uses Gemini to provide concise, public-friendly explanations, with deterministic replies for requests to predict timings, register service requests or operate infrastructure.
 - Explains that treatment stages vary by source and facility; no map or live municipal integration is used.
 
-The former sensor dashboard, demand forecaster, leak detection, alerting, simulators and operational backend remain in `smart_water_system/` for reference, but are not imported or exposed by the main `app.py` workflow. The root `requirements.txt` lists only dependencies needed to run the chatbot.
+The original sensor dashboard, demand forecaster, leak detection, alerting and simulator features are preserved and available as **Existing Dashboard** in the Streamlit navigation. The explainer bot is the home page. The older backend and simulator source in `smart_water_system/` remains available as well.
 
 ## Run locally
 
@@ -83,16 +83,17 @@ Do not commit API keys, local secrets files, or screenshots/logs containing cred
 - General pressure information only; for a specific interruption, pressure problem or water-safety question, consult the official utility or relevant public-health authority.
 - Inputs requesting out-of-scope actions are screened before an API call. The model also receives a detailed system instruction; as with any generative model, it can make mistakes.
 
-## Project layout and retained source
+## Project layout
 
 ```text
 app.py                          # Primary Streamlit explainer chatbot
-requirements.txt                # Streamlit and google-genai
+pages/2_Existing Dashboard.py   # Preserved original monitoring dashboard
+requirements.txt                # Original dependencies plus google-genai
 .gitignore                      # Excludes .streamlit/secrets.toml
-smart_water_system/             # Legacy prototype retained, not used by app.py
+smart_water_system/             # Existing backend, models and simulator
 ```
 
-The older prototype includes monitoring, forecasting, leak detection, alerting, simulated sensor data and operational endpoints. Those capabilities are not part of this explanation-only application's user flow. No source files were deleted.
+The chatbot does not access the dashboard's local demo data, make municipal claims, or operate infrastructure. The existing dashboard remains a separate demonstration workflow and labels its readings as local demo/simulator data.
 
 ## Demo checklist
 
